@@ -1,0 +1,1193 @@
+{
+  "info": {
+    "_postman_id": "5b545f9a-dd54-4423-a809-64b76987585f",
+    "name": "Criminal Database API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "53742884",
+    "_collection_link": "https://go.postman.co/collection/53742884-5b545f9a-dd54-4423-a809-64b76987585f?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Get All Criminals",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/criminals/",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "criminals",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Get All Criminals",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/criminals/",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "criminals",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Thu, 23 Apr 2026 19:48:04 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.12.8"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Vary",
+              "value": "Accept, origin"
+            },
+            {
+              "key": "Allow",
+              "value": "OPTIONS, GET"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "730"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"id\": 1,\n        \"first_name\": \"Joaquín El Chapo\",\n        \"last_name\": \"de Guzmán\",\n        \"nationality\": \"Mexican\",\n        \"primary_crime\": \"drug_trafficking\",\n        \"status\": \"arrested\",\n        \"photo\": null\n    },\n    {\n        \"id\": 2,\n        \"first_name\": \"Anders\",\n        \"last_name\": \"Breivik\",\n        \"nationality\": \"Norwegian\",\n        \"primary_crime\": \"terrorism\",\n        \"status\": \"arrested\",\n        \"photo\": null\n    },\n    {\n        \"id\": 3,\n        \"first_name\": \"Rafael\",\n        \"last_name\": \"Caro Quintero\",\n        \"nationality\": \"Mexican\",\n        \"primary_crime\": \"drug_trafficking\",\n        \"status\": \"arrested\",\n        \"photo\": null\n    },\n    {\n        \"id\": 4,\n        \"first_name\": \"Joseph\",\n        \"last_name\": \"Kony\",\n        \"nationality\": \"Ugandan\",\n        \"primary_crime\": \"other\",\n        \"status\": \"wanted\",\n        \"photo\": null\n    },\n    {\n        \"id\": 5,\n        \"first_name\": \"Dzhokhar\",\n        \"last_name\": \"Tsarnaev\",\n        \"nationality\": \"Russian-American\",\n        \"primary_crime\": \"terrorism\",\n        \"status\": \"arrested\",\n        \"photo\": null\n    }\n]"
+        }
+      ]
+    },
+    {
+      "name": "Get Single Criminal",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/criminals/1/",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "criminals",
+            "1",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Get Single Criminal",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/criminals/1/",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "criminals",
+                "1",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Thu, 23 Apr 2026 19:48:50 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.12.8"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Vary",
+              "value": "Accept, origin"
+            },
+            {
+              "key": "Allow",
+              "value": "OPTIONS, GET"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "671"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": 1,\n    \"cases\": [\n        {\n            \"id\": 1,\n            \"criminal_name\": \"de Guzmán\",\n            \"case_status\": \"closed\",\n            \"description\": \"Former leader of a major drug trafficking organization responsible for large-scale cocaine, heroin, and methamphetamine distribution across multiple countries; convicted in the United States.\",\n            \"severity_level\": \"critical\",\n            \"created_at\": \"2026-04-23T19:35:53.595321Z\",\n            \"criminal\": 1\n        }\n    ],\n    \"organizations\": [\n        {\n            \"name\": \"Sinaloa Cartel\",\n            \"role\": \"Leader\"\n        }\n    ],\n    \"first_name\": \"Joaquín El Chapo\",\n    \"last_name\": \"de Guzmán\",\n    \"gender\": \"M\",\n    \"date_of_birth\": \"1957-04-04\",\n    \"place_of_birth\": \"La Tuna, Badiraguato, Mexico\",\n    \"nationality\": \"Mexican\",\n    \"primary_crime\": \"drug_trafficking\",\n    \"status\": \"arrested\",\n    \"photo\": null\n}"
+        }
+      ]
+    },
+    {
+      "name": "Search Criminals",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/criminals/?search=Dzhokhar",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "criminals",
+            ""
+          ],
+          "query": [
+            {
+              "key": "search",
+              "value": "Dzhokhar"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Search Criminals",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/criminals/?search=Dzhokhar",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "criminals",
+                ""
+              ],
+              "query": [
+                {
+                  "key": "search",
+                  "value": "Dzhokhar"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Thu, 23 Apr 2026 19:50:15 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.12.8"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Vary",
+              "value": "Accept, origin"
+            },
+            {
+              "key": "Allow",
+              "value": "OPTIONS, GET"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "151"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"id\": 5,\n        \"first_name\": \"Dzhokhar\",\n        \"last_name\": \"Tsarnaev\",\n        \"nationality\": \"Russian-American\",\n        \"primary_crime\": \"terrorism\",\n        \"status\": \"arrested\",\n        \"photo\": null\n    }\n]"
+        }
+      ]
+    },
+    {
+      "name": "Filter by Nationality",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/criminals/?nationality=Mexican",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "criminals",
+            ""
+          ],
+          "query": [
+            {
+              "key": "nationality",
+              "value": "Mexican"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Filter by Nationality",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/criminals/?nationality=Mexican",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "criminals",
+                ""
+              ],
+              "query": [
+                {
+                  "key": "nationality",
+                  "value": "Mexican"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Thu, 23 Apr 2026 19:50:52 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.12.8"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Vary",
+              "value": "Accept, origin"
+            },
+            {
+              "key": "Allow",
+              "value": "OPTIONS, GET"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "311"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"id\": 1,\n        \"first_name\": \"Joaquín El Chapo\",\n        \"last_name\": \"de Guzmán\",\n        \"nationality\": \"Mexican\",\n        \"primary_crime\": \"drug_trafficking\",\n        \"status\": \"arrested\",\n        \"photo\": null\n    },\n    {\n        \"id\": 3,\n        \"first_name\": \"Rafael\",\n        \"last_name\": \"Caro Quintero\",\n        \"nationality\": \"Mexican\",\n        \"primary_crime\": \"drug_trafficking\",\n        \"status\": \"arrested\",\n        \"photo\": null\n    }\n]"
+        }
+      ]
+    },
+    {
+      "name": "Get All Organizations",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/organizations/",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "organizations",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Get All Organizations",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/organizations/",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "organizations",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Thu, 23 Apr 2026 19:52:22 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.12.8"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Vary",
+              "value": "Accept, origin"
+            },
+            {
+              "key": "Allow",
+              "value": "GET, POST, HEAD, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "1442"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"id\": 1,\n        \"name\": \"Cosa Nostra\",\n        \"organization_type\": \"mafia\",\n        \"country_of_origin\": \"Italy\",\n        \"description\": \"One of the oldest organized crime groups, involved in extortion, racketeering, drug trafficking, and political influence; operates through a structured network of families with a strict code of silence (omertà).\"\n    },\n    {\n        \"id\": 2,\n        \"name\": \"Sinaloa Cartel\",\n        \"organization_type\": \"cartel\",\n        \"country_of_origin\": \"Mexico\",\n        \"description\": \"One of the largest and most powerful drug cartels, involved in global trafficking of narcotics (especially cocaine, heroin, methamphetamine, and fentanyl), known for extensive international operations and influence.\"\n    },\n    {\n        \"id\": 3,\n        \"name\": \"ISIS\",\n        \"organization_type\": \"terrorist\",\n        \"country_of_origin\": \"Iraq\",\n        \"description\": \"A jihadist extremist group that at its peak controlled territory in Iraq and Syria and carried out large-scale attacks; now largely decentralized into smaller cells and underground networks.\\r\\nKnown members count: Estimated ~10,000–30,000 (varies by intelligence estimates and fluctuates over time)\"\n    },\n    {\n        \"id\": 4,\n        \"name\": \"Guadalajara Cartel\",\n        \"organization_type\": \"cartel\",\n        \"country_of_origin\": \"Mexico\",\n        \"description\": \"One of the earliest major Mexican cartels; operated in the 1970s–1980s, heavily involved in drug production and trafficking, and later broke apart into groups that formed modern cartels like Sinaloa.\\r\\nKnown members count: Several hundred (exact number unknown, historical estimates vary)\"\n    }\n]"
+        }
+      ]
+    },
+    {
+      "name": "Create Organization",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Test Cartel\",\n  \"organization_type\": \"cartel\",\n  \"country_of_origin\": \"Colombia\",\n  \"description\": \"Test organization\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/organizations/",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "organizations",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Create Organization",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Test Cartel\",\n  \"organization_type\": \"cartel\",\n  \"country_of_origin\": \"Colombia\",\n  \"description\": \"Test organization\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/organizations/",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "organizations",
+                ""
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Thu, 23 Apr 2026 19:54:42 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.12.8"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Vary",
+              "value": "Accept, origin"
+            },
+            {
+              "key": "Allow",
+              "value": "GET, POST, HEAD, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "123"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": 5,\n    \"name\": \"Test Cartel\",\n    \"organization_type\": \"cartel\",\n    \"country_of_origin\": \"Colombia\",\n    \"description\": \"Test organization\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Get All Cases",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/cases/",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "cases",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Get All Cases",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/cases/",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "cases",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Thu, 23 Apr 2026 19:56:12 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.12.8"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Vary",
+              "value": "Accept, origin"
+            },
+            {
+              "key": "Allow",
+              "value": "GET, POST, PUT, DELETE, HEAD, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "1493"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"id\": 1,\n        \"criminal_name\": \"de Guzmán\",\n        \"case_status\": \"closed\",\n        \"description\": \"Former leader of a major drug trafficking organization responsible for large-scale cocaine, heroin, and methamphetamine distribution across multiple countries; convicted in the United States.\",\n        \"severity_level\": \"critical\",\n        \"created_at\": \"2026-04-23T19:35:53.595321Z\",\n        \"criminal\": 1\n    },\n    {\n        \"id\": 2,\n        \"criminal_name\": \"Breivik\",\n        \"case_status\": \"closed\",\n        \"description\": \"Carried out coordinated attacks in Norway resulting in mass casualties; acted alone motivated by extremist ideology.\",\n        \"severity_level\": \"critical\",\n        \"created_at\": \"2026-04-23T19:36:12.806584Z\",\n        \"criminal\": 2\n    },\n    {\n        \"id\": 3,\n        \"criminal_name\": \"Caro Quintero\",\n        \"case_status\": \"open\",\n        \"description\": \"Co-founder of an early major drug cartel involved in large-scale narcotics trafficking and linked to violent cartel activity.\",\n        \"severity_level\": \"high\",\n        \"created_at\": \"2026-04-23T19:36:44.179841Z\",\n        \"criminal\": 3\n    },\n    {\n        \"id\": 4,\n        \"criminal_name\": \"Kony\",\n        \"case_status\": \"open\",\n        \"description\": \"Leader of an armed insurgent group responsible for war crimes, forced recruitment of child soldiers, and prolonged regional conflict.\",\n        \"severity_level\": \"critical\",\n        \"created_at\": \"2026-04-23T19:38:21.526648Z\",\n        \"criminal\": 4\n    },\n    {\n        \"id\": 5,\n        \"criminal_name\": \"Tsarnaev\",\n        \"case_status\": \"closed\",\n        \"description\": \"Participated in a terrorist bombing attack in the United States causing civilian deaths and injuries. (Boston Marathon bombing, 2013)\",\n        \"severity_level\": \"critical\",\n        \"created_at\": \"2026-04-23T19:40:19.693866Z\",\n        \"criminal\": 5\n    }\n]"
+        }
+      ]
+    },
+    {
+      "name": "Create Case",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"criminal\": 1,\n  \"case_status\": \"open\",\n  \"description\": \"Investigation ongoing\",\n  \"severity_level\": \"high\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/cases/",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "cases",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Create Case",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"criminal\": 1,\n  \"case_status\": \"open\",\n  \"description\": \"Investigation ongoing\",\n  \"severity_level\": \"high\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/cases/",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "cases",
+                ""
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Thu, 23 Apr 2026 19:57:11 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.12.8"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Vary",
+              "value": "Accept, origin"
+            },
+            {
+              "key": "Allow",
+              "value": "GET, POST, PUT, DELETE, HEAD, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "176"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": 6,\n    \"criminal_name\": \"de Guzmán\",\n    \"case_status\": \"open\",\n    \"description\": \"Investigation ongoing\",\n    \"severity_level\": \"high\",\n    \"created_at\": \"2026-04-23T19:57:11.235142Z\",\n    \"criminal\": 1\n}"
+        }
+      ]
+    },
+    {
+      "name": "Update Case",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"criminal\": 1,\n  \"case_status\": \"closed\",\n  \"description\": \"Case resolved\",\n  \"severity_level\": \"medium\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/cases/1/",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "cases",
+            "1",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Update Case",
+          "originalRequest": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"criminal\": 1,\n  \"case_status\": \"closed\",\n  \"description\": \"Case resolved\",\n  \"severity_level\": \"medium\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/cases/1/",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "cases",
+                "1",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Thu, 23 Apr 2026 19:58:33 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.12.8"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Vary",
+              "value": "Accept, origin"
+            },
+            {
+              "key": "Allow",
+              "value": "GET, POST, PUT, DELETE, HEAD, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "172"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": 1,\n    \"criminal_name\": \"de Guzmán\",\n    \"case_status\": \"closed\",\n    \"description\": \"Case resolved\",\n    \"severity_level\": \"medium\",\n    \"created_at\": \"2026-04-23T19:35:53.595321Z\",\n    \"criminal\": 1\n}"
+        }
+      ]
+    },
+    {
+      "name": "Delete Case",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/cases/6/",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "cases",
+            "6",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Delete Case",
+          "originalRequest": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/cases/6/",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "cases",
+                "6",
+                ""
+              ]
+            }
+          },
+          "status": "No Content",
+          "code": 204,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Thu, 23 Apr 2026 19:59:21 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.12.8"
+            },
+            {
+              "key": "Vary",
+              "value": "Accept, origin"
+            },
+            {
+              "key": "Allow",
+              "value": "GET, POST, PUT, DELETE, HEAD, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "0"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ],
+          "cookie": [],
+          "body": null
+        }
+      ]
+    },
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"admin\",\n  \"password\": \"admin\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/auth/login/",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "auth",
+            "login",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Login",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"admin\",\n  \"password\": \"admin\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/auth/login/",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "auth",
+                "login",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Thu, 23 Apr 2026 20:00:03 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.12.8"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Vary",
+              "value": "Accept, origin"
+            },
+            {
+              "key": "Allow",
+              "value": "OPTIONS, POST"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "83"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"token\": \"1bdefe8595b15f1933b42285ddbfd91494f80c5e\",\n    \"user_id\": 1,\n    \"username\": \"admin\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Logout",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Token 1bdefe8595b15f1933b42285ddbfd91494f80c5e",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8000/api/auth/logout/",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "auth",
+            "logout",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Logout",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Token 1bdefe8595b15f1933b42285ddbfd91494f80c5e",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/api/auth/logout/",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "auth",
+                "logout",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Thu, 23 Apr 2026 20:03:49 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.12.8"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Vary",
+              "value": "Accept, origin"
+            },
+            {
+              "key": "Allow",
+              "value": "OPTIONS, POST"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "37"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"Successfully logged out\"\n}"
+        }
+      ]
+    }
+  ]
+}
