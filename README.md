@@ -39,7 +39,7 @@
 | HTML5/CSS3 | - | Styling |
 
 ## 📁 Project Structure
-wanted-caught/
+```wanted-caught/
 ├── backend/
 │ ├── api/
 │ │ ├── models.py # 4 models: Criminal, Organization, CaseFile, Membership
@@ -60,6 +60,7 @@ wanted-caught/
 │ │ └── styles.css
 │ └── angular.json
 └── README.md
+```
 
 ## 🚀 Installation & Running
 
