@@ -72,7 +72,7 @@
 ### Backend Setup
 ```bash
 # Clone the repository
-git clone <your-repo-url>
+git clone https://github.com/Aslanz200/wanted-caught
 cd wanted-caught/backend
 
 # Create and activate virtual environment
