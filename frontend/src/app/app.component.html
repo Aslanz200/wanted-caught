@@ -1,0 +1,34 @@
+<div class="app-shell">
+    <header class="app-header">
+        <div class="brand">
+            <span class="logo-icon">🕵️</span>
+            <strong>Wanted-Caught</strong>
+        </div>
+        <nav>
+            <a routerLink="/" routerLinkActive="active">Главная</a>
+            <a routerLink="/criminals" routerLinkActive="active">База</a>
+        </nav>
+        <div class="app-actions">
+            <button *ngIf="!authService.isAuthenticated()" class="button-secondary" routerLink="/login">Войти</button>
+            <button *ngIf="authService.isAuthenticated()" class="button-secondary" (click)="logout()">🚪 Выйти</button>
+        </div>
+    </header>
+
+    <main>
+        <router-outlet></router-outlet>
+    </main>
+
+    <footer>
+        <p>© 2025 Wanted-Caught Criminal Database. All rights reserved.</p>
+    </footer>
+
+    <div class="audio-player" [class.playing]="isPlaying">
+        <button class="audio-toggle" (click)="toggleAudio()">
+            <span *ngIf="isPlaying">🔊</span>
+            <span *ngIf="!isPlaying">🔇</span>
+        </button>
+        <audio #audioPlayer loop>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+</div>

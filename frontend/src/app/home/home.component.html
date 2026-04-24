@@ -1,0 +1,28 @@
+<section class="card">
+  <h2 class="section-title">Добро пожаловать в архив Wanted-Caught</h2>
+  <p>Здесь хранится база подозреваемых, фильтры по делу и отчёты. Для полного доступа выполните вход и переходите на страницу базы.</p>
+  <div class="form-grid" style="margin-top: 20px;">
+    <button class="button-primary" (click)="navigateToDatabase()">Перейти к базе</button>
+    <button class="button-secondary" (click)="loadStatistics()">Загрузить статистику</button>
+  </div>
+  <div *ngIf="isLoading" class="alert">Загрузка статистики...</div>
+  <div *ngIf="error" class="alert">{{ error }}</div>
+  <div class="stats-grid" *ngIf="stats.total || stats.countries">
+    <div class="stat-card">
+      <strong>{{ stats.total }}</strong>
+      <span>Преступников в базе</span>
+    </div>
+    <div class="stat-card">
+      <strong>{{ stats.countries }}</strong>
+      <span>Стран</span>
+    </div>
+    <div class="stat-card">
+      <strong>{{ stats.years }}</strong>
+      <span>Годов</span>
+    </div>
+    <div class="stat-card">
+      <strong>{{ stats.crimeTypes }}</strong>
+      <span>Типов преступлений</span>
+    </div>
+  </div>
+</section>

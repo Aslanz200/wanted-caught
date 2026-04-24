@@ -1,0 +1,93 @@
+<section class="card">
+    <h2 class="section-title">🔍 Поиск по базе</h2>
+    <div class="form-grid">
+        <div class="form-field">
+            <label for="search">Поиск</label>
+            <input id="search" type="text" [(ngModel)]="selected.search" placeholder="Имя или преступление" (keyup.enter)="applyFilters()" />
+        </div>
+        <div class="form-field">
+            <label for="country">Страна</label>
+            <select id="country" [(ngModel)]="selected.country" (change)="applyFilters()">
+                <option value="all">Все страны</option>
+                <option *ngFor="let country of filters.countries" [value]="country">{{ getCountryName(country) }}</option>
+            </select>
+        </div>
+        <div class="form-field">
+            <label for="year">Год</label>
+            <select id="year" [(ngModel)]="selected.year" (change)="applyFilters()">
+                <option value="all">Любой год</option>
+                <option *ngFor="let year of filters.years" [value]="year">{{ year }}</option>
+            </select>
+        </div>
+        <div class="form-field">
+            <label for="crimeType">Тип преступления</label>
+            <select id="crimeType" [(ngModel)]="selected.crimeType" (change)="applyFilters()">
+                <option value="all">Все типы</option>
+                <option *ngFor="let crimeType of filters.crimeTypes" [value]="crimeType">{{ getCrimeTypeText(crimeType) }}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-grid" style="margin-top: 18px;">
+        <button class="button-primary" (click)="applyFilters()">🔍 Применить фильтры</button>
+        <button class="button-secondary" (click)="resetFilters()">🔄 Сбросить</button>
+    </div>
+</section>
+
+<!-- Статистика -->
+<div class="stats-row">
+    <div class="stat-card">
+        <div class="stat-value">{{ stats.total }}</div>
+        <div class="stat-label">Всего дел</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-value">{{ stats.countries }}</div>
+        <div class="stat-label">Стран</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-value">{{ stats.crimeTypes }}</div>
+        <div class="stat-label">Типов преступлений</div>
+    </div>
+</div>
+
+<!-- Список дел с фото -->
+<section class="card" *ngIf="!isLoading && criminals.length">
+    <h3 class="section-title">📋 Найденные дела</h3>
+    <div class="criminal-grid">
+        <article class="criminal-card" *ngFor="let criminal of criminals" (click)="openDetail(criminal)">
+            <!-- ЗДЕСЬ НОВЫЙ БЛОК С ФОТО -->
+            <div class="criminal-photo">
+                <img
+                        *ngIf="criminal.imageUrl"
+                        [src]="criminal.imageUrl"
+                        [alt]="criminal.name"
+                        (error)="criminal.imageUrl = null"
+                >
+                <div *ngIf="!criminal.imageUrl" class="no-photo">
+                    👤
+                </div>
+            </div>
+            <!-- КОНЕЦ БЛОКА С ФОТО -->
+
+            <div class="criminal-card-header">
+                <strong>{{ criminal.name }}</strong>
+                <span>{{ getCountryName(criminal.country) }} · {{ criminal.year }}</span>
+            </div>
+            <div class="criminal-card-body">
+                <p>{{ criminal.summary }}</p>
+                <div class="criminal-tags">
+                    <span>{{ getCrimeTypeText(criminal.crimeType) }}</span>
+                    <span [class]="criminal.status" class="status-badge">
+                        {{ getStatusText(criminal.status || '') }}
+                    </span>
+                </div>
+            </div>
+            <button class="button-primary" (click)="openDetail(criminal); $event.stopPropagation()">📄 Просмотр дела</button>
+        </article>
+    </div>
+</section>
+
+<div *ngIf="!isLoading && !criminals.length" class="alert">
+    🔍 Нет данных по текущему запросу. Измените фильтры или обновите базу.
+</div>
+<div *ngIf="isLoading" class="alert">⏳ Загрузка списка...</div>
+<div *ngIf="error" class="alert">{{ error }}</div>

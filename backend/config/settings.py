@@ -37,15 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework.authtoken',
     'rest_framework',
+    'rest_framework.authtoken',
     'corsheaders',
     'api',
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware', #allows to work with photos
-    'django.middleware.security.SecurityMiddleware', #django+angular
+    'corsheaders.middleware.CorsMiddleware',  # должно быть первым
+    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -103,15 +103,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
-    ],
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',
-    ],
-}
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
@@ -129,12 +120,34 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-
-CORS_ALLOW_ALL_ORIGINS = True   #here tooo
-
-MEDIA_URL = '/media/'       #here too
-MEDIA_ROOT = BASE_DIR / 'media'     #here
-
+# Media files (user uploaded files)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+# Default primary key field type
+# https://docs.djangoproject.com/en/6.0/ref/settings/#default-auto-field
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Django REST Framework settings
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ],
+}
+
+# CORS settings (для связи с Angular)
+CORS_ALLOW_ALL_ORIGINS = True  # для разработки
+
+# Если хотите конкретные домены (для production):
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:4200",
+#     "http://127.0.0.1:4200",
+# ]
+
+CORS_ALLOW_CREDENTIALS = True

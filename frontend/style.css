@@ -1,0 +1,551 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Georgia, 'Times New Roman', serif;
+    min-height: 100vh;
+    padding: 30px;
+    color: #3d2f1b;
+    background: #f3e7d2;
+    background-image:
+        radial-gradient(rgba(255,255,255,0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(0,0,0,0.02) 1px, transparent 1px);
+    background-size: 140px 140px, 4px 4px, 4px 4px;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at top left, rgba(255,255,255,0.6), transparent 18%),
+                radial-gradient(circle at bottom right, rgba(0,0,0,0.08), transparent 25%);
+    pointer-events: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.age-modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(12, 10, 9, 0.85);
+    z-index: 2000;
+    padding: 16px;
+}
+
+.age-modal.active {
+    display: flex;
+}
+
+.age-modal-card {
+    width: min(520px, 100%);
+    background: #f7e8d1;
+    border: 2px solid #6a3c24;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    border-radius: 18px;
+    padding: 32px 30px;
+    text-align: center;
+    position: relative;
+}
+
+.age-modal-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle at 20% 20%, rgba(136, 0, 0, .18), transparent 20%),
+                      radial-gradient(circle at 80% 80%, rgba(136, 0, 0, .18), transparent 18%);
+}
+
+.age-modal-head {
+    font-size: 2.5rem;
+    font-weight: 900;
+    letter-spacing: 0.15em;
+    margin-bottom: 16px;
+    color: #7b1414;
+}
+
+.age-modal-card h1 {
+    font-size: 1.8rem;
+    margin-bottom: 18px;
+    letter-spacing: 0.02em;
+}
+
+.age-modal-card p {
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 28px;
+    color: #3b2b1b;
+}
+
+.age-modal-card button {
+    padding: 14px 22px;
+    border: none;
+    background: #7b1414;
+    color: #f7e8d1;
+    border-radius: 999px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.age-modal-card button:hover {
+    transform: translateY(-2px);
+    background: #941b1b;
+}
+
+.header {
+    background: linear-gradient(180deg, #f8efd9 0%, #efe2c3 100%);
+    padding: 40px 35px;
+    border-radius: 24px;
+    border: 1px solid #b89a78;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.14);
+    margin-bottom: 40px;
+    text-align: left;
+    position: relative;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 120px;
+    height: 120px;
+    background: rgba(139, 0, 0, 0.1);
+    border-radius: 50%;
+    transform: rotate(15deg);
+}
+
+.header h1 {
+    color: #3e2f1d;
+    margin-bottom: 20px;
+    font-size: 3rem;
+    line-height: 1.05;
+    letter-spacing: 0.02em;
+}
+
+.header p,
+.header .header-note {
+    color: #4a3d2c;
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+.header-warning {
+    display: inline-flex;
+    padding: 10px 16px;
+    border-radius: 999px;
+    background: rgba(123, 20, 20, 0.16);
+    color: #7b1414;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    margin-bottom: 18px;
+    text-transform: uppercase;
+    border: 1px solid rgba(123, 20, 20, 0.25);
+}
+
+.header .header-note {
+    margin-top: 18px;
+    padding: 18px 22px;
+    background: rgba(255, 255, 255, 0.55);
+    border-left: 5px solid #7b1414;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.03);
+}
+
+.header strong {
+    color: #581e1c;
+}
+
+.stats-panel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 18px;
+    margin-bottom: 40px;
+}
+
+.stat-card {
+    background: #f6e9d6;
+    border: 1px dashed rgba(82, 60, 32, 0.3);
+    border-radius: 18px;
+    padding: 24px;
+    text-align: center;
+    color: #402d1e;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.09);
+}
+
+.stat-card strong {
+    display: block;
+    font-size: 2.3rem;
+    margin-bottom: 10px;
+}
+
+.stat-card span {
+    color: rgba(61, 47, 27, 0.85);
+    font-size: 0.95rem;
+}
+
+.filters-panel {
+    background: rgba(255, 250, 239, 0.95);
+    padding: 30px;
+    border-radius: 22px;
+    border: 1px solid #d0b69c;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    margin-bottom: 40px;
+}
+
+.filters-panel h2 {
+    margin-bottom: 24px;
+    font-size: 1.5rem;
+    color: #402c1e;
+}
+
+.filters-panel label {
+    display: block;
+    color: #402c1e;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.filters-panel input,
+.filters-panel select,
+.filters-panel button {
+    width: 100%;
+    border-radius: 18px;
+    border: 1px solid #b8a087;
+    padding: 14px 18px;
+    font-size: 1rem;
+    background: #f7eee1;
+    color: #42321f;
+}
+
+.filters-panel input:focus,
+.filters-panel select:focus,
+.filters-panel button:focus {
+    outline: none;
+    border-color: #7b1414;
+}
+
+.filters-panel button {
+    background: #7b1414;
+    color: #f8e5cf;
+    border: none;
+    cursor: pointer;
+}
+
+.filters-panel button:hover {
+    background: #8d1f1f;
+}
+
+.search-box {
+    margin-bottom: 28px;
+    display: grid;
+    gap: 12px;
+}
+
+.search-box input,
+.search-box select,
+.search-box button {
+    width: 100%;
+    border-radius: 18px;
+    border: 1px solid #b8a087;
+    padding: 14px 18px;
+    font-size: 1rem;
+    background: #f7eee1;
+    color: #42321f;
+}
+
+.search-box input:focus,
+.search-box select:focus,
+.search-box button:focus {
+    outline: none;
+    border-color: #7b1414;
+}
+
+.search-box button {
+    background: #7b1414;
+    color: #f8e5cf;
+    border: none;
+    cursor: pointer;
+}
+
+.search-box button:hover {
+    background: #8d1f1f;
+}
+
+.criminals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 22px;
+    margin-bottom: 40px;
+}
+
+.criminal-card {
+    position: relative;
+    background: linear-gradient(180deg, #fff8ec 0%, #f3e4cb 100%);
+    border: 1px solid #bc9b75;
+    border-radius: 18px;
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.14);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.criminal-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 45px rgba(0,0,0,0.18);
+}
+
+.criminal-card::before {
+    content: '';
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    width: 60px;
+    height: 60px;
+    background: rgba(123, 20, 20, 0.08);
+    border-radius: 50%;
+}
+
+.criminal-card::after {
+    content: '';
+    position: absolute;
+    bottom: 12px;
+    left: 18px;
+    width: 80px;
+    height: 16px;
+    background: rgba(0,0,0,0.04);
+    border-radius: 999px;
+}
+
+.criminal-card.blood-card::before {
+    background: radial-gradient(circle at 20% 30%, rgba(126, 12, 12, 0.65), transparent 28%),
+                radial-gradient(circle at 75% 45%, rgba(138, 0, 0, 0.55), transparent 18%);
+}
+
+.criminal-card.blood-card .criminal-info::before {
+    content: '';
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    width: 22px;
+    height: 22px;
+    background: radial-gradient(circle, rgba(140, 8, 8, 0.95) 30%, transparent 65%);
+    border-radius: 50%;
+}
+
+.criminal-image {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-bottom: 1px solid rgba(124, 92, 64, 0.18);
+}
+
+.criminal-info {
+    position: relative;
+    padding: 22px 20px 26px;
+}
+
+.criminal-info h3 {
+    margin-bottom: 10px;
+    font-size: 1.25rem;
+    color: #432f20;
+}
+
+.criminal-category {
+    display: inline-block;
+    background: rgba(123, 20, 20, 0.12);
+    color: #7b1414;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    margin-bottom: 14px;
+}
+
+.criminal-info p {
+    color: #4a3a28;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin: 8px 0;
+}
+
+.criminal-info p strong {
+    color: #402c1d;
+}
+
+.criminal-info .blood-drop {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: #8f1111;
+    border-radius: 50%;
+    margin-left: 8px;
+    box-shadow: 0 0 12px rgba(143, 17, 17, 0.6);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background-color: rgba(10, 8, 6, 0.78);
+    overflow-y: auto;
+}
+
+.modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: linear-gradient(180deg, #fbf0d9 0%, #eedebf 100%);
+    padding: 30px;
+    border-radius: 24px;
+    max-width: 900px;
+    width: 94%;
+    max-height: 90vh;
+    overflow-y: auto;
+    border: 1px solid #b2936d;
+    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.3);
+}
+
+.modal-close {
+    position: absolute;
+    top: 18px;
+    right: 24px;
+    font-size: 32px;
+    color: #6b4b3e;
+}
+
+.profile {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: start;
+}
+
+.profile-image {
+    width: 100%;
+    border-radius: 18px;
+    object-fit: cover;
+    max-height: 420px;
+    border: 1px solid rgba(124, 92, 64, 0.2);
+}
+
+.profile-details h2 {
+    color: #3b2919;
+    margin-bottom: 16px;
+    font-size: 2.2rem;
+}
+
+.profile-details .criminal-category {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.9rem;
+}
+
+.profile-section {
+    margin-bottom: 24px;
+}
+
+.profile-section.blood {
+    background: rgba(139, 0, 0, 0.05);
+    border-left: 6px solid rgba(139, 0, 0, 0.4);
+    padding: 18px 20px;
+    border-radius: 12px;
+}
+
+.profile-section h3 {
+    color: #61281f;
+    margin-bottom: 10px;
+    font-size: 1.15rem;
+    border-bottom: 2px solid #ac6a52;
+    padding-bottom: 8px;
+}
+
+.profile-section p {
+    color: #4f3a2b;
+    line-height: 1.8;
+}
+
+.label {
+    font-weight: bold;
+    color: #3e2c1d;
+    display: inline-block;
+    width: 150px;
+}
+
+.victims-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.victims-list li {
+    padding: 10px 0;
+    color: #4f3c2f;
+    border-bottom: 1px dotted rgba(79, 60, 45, 0.25);
+}
+
+.victims-list li:before {
+    content: '— ';
+    color: #7f1e1e;
+    font-weight: bold;
+}
+
+.no-results {
+    text-align: center;
+    padding: 50px 40px;
+    background: #f8f0df;
+    border: 1px solid #cfb494;
+    border-radius: 20px;
+    color: #4a3625;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.no-results h3 {
+    margin-bottom: 12px;
+    font-size: 1.9rem;
+}
+
+.no-results p {
+    font-size: 1rem;
+}
+
+@media (max-width: 900px) {
+    .profile {
+        grid-template-columns: 1fr;
+    }
+
+    .header,
+    .filters-panel,
+    .modal-content,
+    .criminal-card {
+        border-radius: 16px;
+    }
+}
+
+@media (max-width: 700px) {
+    .header h1 {
+        font-size: 2.3rem;
+    }
+
+    .criminals-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .search-box,
+    .filters-panel {
+        gap: 14px;
+    }
+}

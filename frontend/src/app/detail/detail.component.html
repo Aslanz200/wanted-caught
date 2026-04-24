@@ -1,0 +1,16 @@
+<section class="card" *ngIf="criminal || isLoading || error">
+  <h2 class="section-title">Детали дела</h2>
+  <div *ngIf="isLoading" class="alert">Загрузка данных дела...</div>
+  <div *ngIf="error" class="alert">{{ error }}</div>
+  <div *ngIf="criminal">
+    <div class="detail-row">
+      <strong>{{ criminal.name }}</strong>
+      <span>{{ criminal.country }} · {{ criminal.year }}</span>
+    </div>
+    <div class="detail-summary">{{ criminal.summary }}</div>
+    <div class="detail-tags">
+      <span>Категория: {{ criminal.crimeType }}</span>
+    </div>
+    <button class="button-primary" (click)="back()">Назад к списку</button>
+  </div>
+</section>

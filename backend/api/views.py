@@ -5,6 +5,7 @@ from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.authtoken.models import Token
 from django.contrib.auth import authenticate
+from django.contrib.auth.models import User
 from .models import Criminal, Organization, CaseFile, Membership
 from .serializers import (
     CriminalListSerializer,
@@ -140,3 +141,37 @@ def login_view(request):
 def logout_view(request):
     request.user.auth_token.delete()
     return Response({'message': 'Successfully logged out'}, status=status.HTTP_200_OK)
+
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def register_view(request):
+    username = request.data.get('username')
+    password = request.data.get('password')
+    email = request.data.get('email', '')
+
+    if not username or not password:
+        return Response(
+            {'error': 'Username and password are required'},
+            status=status.HTTP_400_BAD_REQUEST
+        )
+
+    if User.objects.filter(username=username).exists():
+        return Response(
+            {'error': 'Username already exists'},
+            status=status.HTTP_400_BAD_REQUEST
+        )
+
+    user = User.objects.create_user(
+        username=username,
+        password=password,
+        email=email
+    )
+
+    token, created = Token.objects.get_or_create(user=user)
+
+    return Response({
+        'token': token.key,
+        'user_id': user.id,
+        'username': user.username,
+        'email': user.email
+    }, status=status.HTTP_201_CREATED)
