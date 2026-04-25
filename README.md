@@ -16,8 +16,8 @@
 | Name              | Role | Contribution |
 |-------------------|------|--------------|
 | [Arslan Kassymov] | Full-Stack Developer | Frontend + Backend development |
-| [Yernaruly Amandyk] | Full-Stack Developer | Frontend + Backend development |
-| [Zhengilmes Aslanbek] | Full-Stack Developer | Frontend + Backend development |
+| [Yernaruly Amandyk] | Frontend Developer | Angular frontend development |
+| [Zhengilmes Aslanbek] | Backend Developer | Django backend development |
 
 ## 🛠️ Tech Stack
 
