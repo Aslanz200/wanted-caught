@@ -44,7 +44,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',  # должно быть первым
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -142,7 +142,7 @@ REST_FRAMEWORK = {
 }
 
 # CORS settings (для связи с Angular)
-CORS_ALLOW_ALL_ORIGINS = True  # для разработки
+CORS_ALLOW_ALL_ORIGINS = True
 
 # Если хотите конкретные домены (для production):
 # CORS_ALLOWED_ORIGINS = [

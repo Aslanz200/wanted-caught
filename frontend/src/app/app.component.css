@@ -1,1 +1,126 @@
-/* empty */
+/* Возрастное предупреждение */
+.age-warning-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  backdrop-filter: blur(4px);
+}
+
+.age-warning-modal {
+  background: linear-gradient(135deg, #2c1a12 0%, #3d2318 100%);
+  border: 3px solid #d4af37;
+  border-radius: 16px;
+  padding: 48px 40px;
+  max-width: 500px;
+  text-align: center;
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    0 0 60px rgba(212, 175, 55, 0.2);
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.warning-icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.age-warning-modal h1 {
+  color: #d4af37;
+  font-size: 2.2rem;
+  margin: 0 0 20px 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  letter-spacing: 1px;
+}
+
+.age-warning-modal p {
+  color: #f0e1d2;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin: 12px 0;
+}
+
+.warning-highlight {
+  background: rgba(139, 69, 19, 0.3);
+  padding: 16px;
+  border-left: 4px solid #e74c3c;
+  border-radius: 8px;
+  margin: 20px 0;
+  font-weight: 600;
+  color: #ffc0a0;
+}
+
+.warning-buttons {
+  display: flex;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.warning-buttons button {
+  flex: 1;
+  padding: 14px 20px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button-danger {
+  background: linear-gradient(135deg, #a93226, #922b21);
+  color: white;
+}
+
+.button-danger:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(169, 50, 38, 0.5);
+}
+
+.button-success {
+  background: linear-gradient(135deg, #d4af37, #c9a961);
+  color: #2c1a12;
+  font-weight: 600;
+}
+
+.button-success:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(212, 175, 55, 0.4);
+  background: linear-gradient(135deg, #e8c547, #d4af37);
+}
+
+.app-shell {
+  transition: opacity 0.3s ease;
+  pointer-events: auto;
+}
+
+.app-shell[style*="opacity: 0.3"] {
+  pointer-events: none;
+}

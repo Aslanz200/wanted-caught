@@ -30,5 +30,8 @@
       }
     }
   },
-  "defaultProject": "criminals-frontend"
+  "defaultProject": "criminals-frontend",
+  "cli": {
+    "analytics": false
+  }
 }

@@ -1,7 +1,7 @@
 /* Горизонтальная сетка */
 .criminal-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, minmax(280px, 1fr));
   gap: 24px;
   margin-top: 24px;
 }
@@ -9,12 +9,29 @@
 .criminal-card {
   display: flex;
   flex-direction: column;
-  background: white;
+  background: url('../../assets/criminal-card.png') center/cover;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  box-shadow: 
+    0 4px 12px rgba(0,0,0,0.15),
+    inset 0 0 40px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-  border: 1px solid rgba(139, 69, 19, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.criminal-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(ellipse at 20% 50%, rgba(139, 69, 19, 0.02) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(139, 69, 19, 0.02) 0%, transparent 50%);
+  pointer-events: none;
+  border-radius: 20px;
 }
 
 .criminal-card:hover {
@@ -24,8 +41,11 @@
 
 .criminal-card-header {
   padding: 16px 20px;
-  background: linear-gradient(135deg, #7b1f1f, #942121);
+  background: linear-gradient(135deg, #5c2e2e, #7a3d3d);
   color: white;
+  position: relative;
+  z-index: 2;
+  border-bottom: 2px solid rgba(212, 175, 55, 0.3);
 }
 
 .criminal-card-header strong {
@@ -46,6 +66,8 @@
 .criminal-card-body {
   padding: 20px;
   flex: 1;
+  position: relative;
+  z-index: 1;
 }
 
 .criminal-card-body p {
@@ -70,13 +92,15 @@
 }
 
 .criminal-tags span:first-child {
-  background: #f0e1d2;
-  color: #8B4513;
+  background: linear-gradient(135deg, #daa520, #d4af37);
+  color: #fff;
+  font-weight: 600;
 }
 
 .criminal-tags span:last-child {
-  background: #e74c3c;
+  background: linear-gradient(135deg, #c0392b, #922b21);
   color: white;
+  font-weight: 600;
 }
 
 .criminal-card button {
@@ -84,22 +108,27 @@
   width: calc(100% - 40px);
   background: linear-gradient(135deg, #8B4513, #A0522D);
   border: none;
-  padding: 10px;
-  border-radius: 12px;
+  padding: 12px;
+  border-radius: 8px;
   color: white;
   cursor: pointer;
   transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(139, 69, 19, 0.2);
 }
 
 .criminal-card button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(139, 69, 19, 0.3);
+  box-shadow: 0 6px 14px rgba(139, 69, 19, 0.4);
+  background: linear-gradient(135deg, #9B5523, #B0623D);
 }
 
 .criminal-photo {
   height: 200px;
   overflow: hidden;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #3d2318, #2c1a12);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -150,7 +179,10 @@
 .stat-value {
   font-size: 2.2rem;
   font-weight: bold;
-  color: #8B4513;
+  background: linear-gradient(135deg, #d4af37, #daa520);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .stat-label {
@@ -187,6 +219,12 @@
 }
 
 /* Адаптивность */
+@media (max-width: 1200px) {
+  .criminal-grid {
+    grid-template-columns: repeat(2, minmax(280px, 1fr));
+  }
+}
+
 @media (max-width: 900px) {
   .dashboard-layout {
     grid-template-columns: 1fr;
@@ -195,4 +233,30 @@
   .criminal-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* Общие стили карточек */
+.card {
+  background: rgba(255, 251, 246, 0.97);
+  border: 2px solid rgba(212, 175, 55, 0.2);
+  border-radius: 16px;
+  padding: 28px;
+  margin-bottom: 28px;
+  box-shadow: 0 8px 24px rgba(90, 68, 45, 0.12);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 12px 32px rgba(90, 68, 45, 0.18);
+  transform: translateY(-2px);
+}
+
+/* Заголовки секций */
+.section-title {
+  margin: 0 0 24px 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2c1a12;
+  border-left: 4px solid #d4af37;
+  padding-left: 20px;
 }

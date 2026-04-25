@@ -1,4 +1,19 @@
-<div class="app-shell">
+<!-- Возрастное предупреждение -->
+<div class="age-warning-overlay" *ngIf="showAgeWarning">
+    <div class="age-warning-modal">
+        <div class="warning-icon">⚠️</div>
+        <h1>Предупреждение</h1>
+        <p>Этот сайт содержит информацию о преступниках и может включать графический контент.</p>
+        <p class="warning-highlight">Вам должно быть <strong>18 лет или старше</strong> для доступа к этому сайту.</p>
+        <p>Подтверждая, вы заявляете, что вам 18 лет или больше.</p>
+        <div class="warning-buttons">
+            <button class="button-danger" (click)="confirmAge(false)">Мне меньше 18 лет</button>
+            <button class="button-success" (click)="confirmAge(true)">Мне 18 лет или больше</button>
+        </div>
+    </div>
+</div>
+
+<div class="app-shell" [style.opacity]="showAgeWarning ? 0.3 : 1">
     <header class="app-header">
         <div class="brand">
             <span class="logo-icon">🕵️</span>
@@ -19,7 +34,7 @@
     </main>
 
     <footer>
-        <p>© 2025 Wanted-Caught Criminal Database. All rights reserved.</p>
+        <p>© 2026 Wanted-Caught Criminal Database. All rights reserved.</p>
     </footer>
 
     <div class="audio-player" [class.playing]="isPlaying">
