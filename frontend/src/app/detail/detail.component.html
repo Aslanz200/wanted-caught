@@ -3,14 +3,44 @@
   <div *ngIf="isLoading" class="alert">Загрузка данных дела...</div>
   <div *ngIf="error" class="alert">{{ error }}</div>
   <div *ngIf="criminal">
+    <!-- Photo -->
+    <div *ngIf="criminal.photo" class="photo-container">
+      <img [src]="criminal.photo" [alt]="criminal.first_name">
+    </div>
+    
     <div class="detail-row">
-      <strong>{{ criminal.name }}</strong>
-      <span>{{ criminal.country }} · {{ criminal.year }}</span>
+      <strong>{{ criminal.first_name }} {{ criminal.last_name }}</strong>
+      <span>{{ criminal.nationality }} · {{ criminal.date_of_birth | date:'yyyy' }}</span>
     </div>
-    <div class="detail-summary">{{ criminal.summary }}</div>
-    <div class="detail-tags">
-      <span>Категория: {{ criminal.crimeType }}</span>
+    
+    <div class="detail-summary">
+      <p><strong>Место рождения:</strong> {{ criminal.place_of_birth }}</p>
+      <p><strong>Дата рождения:</strong> {{ criminal.date_of_birth | date:'dd.MM.yyyy' }}</p>
+      <p><strong>Пол:</strong> {{ criminal.gender === 'M' ? 'Мужской' : 'Женский' }}</p>
+      <p><strong>Национальность:</strong> {{ criminal.nationality }}</p>
+      <p><strong>Основное преступление:</strong> {{ criminal.primary_crime }}</p>
+      <p><strong>Статус:</strong> {{ criminal.status }}</p>
     </div>
-    <button class="button-primary" (click)="back()">Назад к списку</button>
+
+    <!-- Cases -->
+    <div *ngIf="criminal.cases && criminal.cases.length">
+      <h3 class="section-header">📋 Дела</h3>
+      <div *ngFor="let case of criminal.cases" class="case-card">
+        <p><strong>Статус:</strong> {{ case.case_status }}</p>
+        <p><strong>Серьезность:</strong> {{ case.severity_level }}</p>
+        <p>{{ case.description }}</p>
+      </div>
+    </div>
+
+    <!-- Organizations -->
+    <div *ngIf="criminal.organizations && criminal.organizations.length">
+      <h3 class="section-header">🏢 Организации</h3>
+      <div *ngFor="let org of criminal.organizations" class="org-card">
+        <h4>{{ org.name }} ({{ org.organization_type }})</h4>
+        <p><strong>Роль:</strong> {{ org.role }}</p>
+      </div>
+    </div>
+    
+    <button class="button-primary" (click)="back()" style="margin-top: 30px;">← Назад к списку</button>
   </div>
 </section>

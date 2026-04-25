@@ -1,22 +1,24 @@
 export interface Criminal {
   id: number;
-  name: string;
-  country: string;
-  year: number;
-  crimeType: string;
-  summary: string;
-  imageUrl?: string;
-  first_name?: string;
-  last_name?: string;
-  gender?: string;
-  date_of_birth?: string;
-  place_of_birth?: string;
-  nationality?: string;
-  primary_crime?: string;
-  status?: string;
+  first_name: string;
+  last_name: string;
+  gender: string;
+  date_of_birth: string;
+  place_of_birth: string;
+  nationality: string;
+  primary_crime: string;
+  status: string;
   photo?: string | null;
+  cases?: CaseFile[];
+  organizations?: OrganizationMembership[];
 }
 
+export interface OrganizationMembership {
+  id: number;
+  name: string;
+  role: string;
+  organization_type: string;
+}
 export interface FilterOptions {
   countries: string[];
   years: number[];

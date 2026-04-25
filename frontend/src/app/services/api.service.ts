@@ -31,14 +31,14 @@ export class ApiService {
       params = params.set('crime_type', filters.crimeType);
     }
 
-    return this.http.get<any[]>(`${this.baseUrl}/criminals/`, { params }).pipe(
+    return this.http.get<Criminal[]>(`${this.baseUrl}/criminals/`, { params }).pipe(
         map(items => items.map(item => this.transformToCriminal(item))),
         catchError(error => this.handleError(error))
     );
   }
 
   getCriminalById(id: number): Observable<Criminal> {
-    return this.http.get<any>(`${this.baseUrl}/criminals/${id}/`).pipe(
+    return this.http.get<Criminal>(`${this.baseUrl}/criminals/${id}/`).pipe(
         map(item => this.transformToCriminal(item)),
         catchError(error => this.handleError(error))
     );
@@ -48,48 +48,35 @@ export class ApiService {
     return this.getCriminals({}).pipe(
         map(items => ({
           total: items.length,
-          countries: new Set(items.map(item => item.country).filter(c => c)).size,
-          years: new Set(items.map(item => item.year).filter(y => y > 0)).size,
-          crimeTypes: new Set(items.map(item => item.crimeType).filter(c => c)).size
+          countries: new Set(items.map(item => item.nationality).filter(c => c)).size,
+          years: new Set(items.map(item => {
+            if (item.date_of_birth) {
+              return new Date(item.date_of_birth).getFullYear();
+            }
+            return 0;
+          }).filter(y => y > 0)).size,
+          crimeTypes: new Set(items.map(item => item.primary_crime).filter(c => c)).size
         })),
         catchError(error => this.handleError(error))
     );
   }
 
   private transformToCriminal(item: any): Criminal {
-    let imageUrl: string | undefined = undefined;
-    if (item.photo) {
-      let photoPath = item.photo;
-      if (photoPath.startsWith('/')) {
-        imageUrl = `${this.mediaUrl}${photoPath}`;
-      } else {
-        imageUrl = `${this.mediaUrl}/${photoPath}`;
-      }
+    // Fix photo URL to include full path
+    if (item.photo && !item.photo.startsWith('http')) {
+      item.photo = item.photo.startsWith('/') 
+        ? `${this.mediaUrl}${item.photo}` 
+        : `${this.mediaUrl}/${item.photo}`;
     }
-
-    return {
-      id: item.id,
-      name: `${item.first_name} ${item.last_name}`,
-      country: item.nationality,
-      year: item.date_of_birth ? new Date(item.date_of_birth).getFullYear() : 0,
-      crimeType: item.primary_crime,
-      summary: `Status: ${this.getStatusText(item.status)}. Crime: ${this.getCrimeTypeText(item.primary_crime)}. Nationality: ${item.nationality}`,
-      imageUrl: imageUrl,
-      first_name: item.first_name,
-      last_name: item.last_name,
-      gender: item.gender,
-      date_of_birth: item.date_of_birth,
-      place_of_birth: item.place_of_birth,
-      nationality: item.nationality,
-      primary_crime: item.primary_crime,
-      status: item.status,
-      photo: item.photo
-    };
+    return item;
   }
 
   getPhotoUrl(photoPath: string | null): string | undefined {
     if (!photoPath) {
       return undefined;
+    }
+    if (photoPath.startsWith('http')) {
+      return photoPath;
     }
     if (photoPath.startsWith('/')) {
       return `${this.mediaUrl}${photoPath}`;

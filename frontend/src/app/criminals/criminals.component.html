@@ -54,30 +54,29 @@
     <h3 class="section-title">📋 Найденные дела</h3>
     <div class="criminal-grid">
         <article class="criminal-card" *ngFor="let criminal of criminals" (click)="openDetail(criminal)">
-            <!-- ЗДЕСЬ НОВЫЙ БЛОК С ФОТО -->
+            <!-- Photo -->
             <div class="criminal-photo">
                 <img
-                        *ngIf="criminal.imageUrl"
-                        [src]="criminal.imageUrl"
-                        [alt]="criminal.name"
-                        (error)="criminal.imageUrl = null"
+                    *ngIf="criminal.photo"
+                    [src]="criminal.photo"
+                    [alt]="criminal.first_name + ' ' + criminal.last_name"
+                    (error)="onImageError($event)"
                 >
-                <div *ngIf="!criminal.imageUrl" class="no-photo">
+                <div *ngIf="!criminal.photo" class="no-photo">
                     👤
                 </div>
             </div>
-            <!-- КОНЕЦ БЛОКА С ФОТО -->
 
             <div class="criminal-card-header">
-                <strong>{{ criminal.name }}</strong>
-                <span>{{ getCountryName(criminal.country) }} · {{ criminal.year }}</span>
+                <strong>{{ criminal.first_name }} {{ criminal.last_name }}</strong>
+                <span>{{ getCountryName(criminal.nationality) }} · {{ criminal.date_of_birth ? (criminal.date_of_birth | date:'yyyy') : 'N/A' }}</span>
             </div>
             <div class="criminal-card-body">
-                <p>{{ criminal.summary }}</p>
+                <p>{{ getStatusText(criminal.status) }} - {{ getCrimeTypeText(criminal.primary_crime) }}</p>
                 <div class="criminal-tags">
-                    <span>{{ getCrimeTypeText(criminal.crimeType) }}</span>
+                    <span>{{ getCrimeTypeText(criminal.primary_crime) }}</span>
                     <span [class]="criminal.status" class="status-badge">
-                        {{ getStatusText(criminal.status || '') }}
+                        {{ getStatusText(criminal.status) }}
                     </span>
                 </div>
             </div>

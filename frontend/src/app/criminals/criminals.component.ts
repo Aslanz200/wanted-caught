@@ -84,9 +84,14 @@ export class CriminalsComponent implements OnInit {
   updateStats() {
     this.stats = {
       total: this.criminals.length,
-      countries: new Set(this.criminals.map(c => c.country).filter(c => c)).size,
-      years: new Set(this.criminals.map(c => c.year).filter(y => y > 0)).size,
-      crimeTypes: new Set(this.criminals.map(c => c.crimeType).filter(c => c)).size
+      countries: new Set(this.criminals.map(c => c.nationality).filter(c => c)).size,  
+      years: new Set(this.criminals.map(c => {
+        if (c.date_of_birth) {
+          return new Date(c.date_of_birth).getFullYear();
+        }
+        return 0;
+      }).filter(y => y > 0)).size,  
+      crimeTypes: new Set(this.criminals.map(c => c.primary_crime).filter(c => c)).size 
     };
   }
 
