@@ -62,7 +62,6 @@ export class ApiService {
   }
 
   private transformToCriminal(item: any): Criminal {
-    // Fix photo URL to include full path
     if (item.photo && !item.photo.startsWith('http')) {
       item.photo = item.photo.startsWith('/') 
         ? `${this.mediaUrl}${item.photo}` 

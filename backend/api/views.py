@@ -52,7 +52,7 @@ def criminal_detail(request, pk):
     return Response(serializer.data)
 
 
-# CBV 1: CaseFile CRUD (full CRUD operations)
+# CBV 1: CaseFile CRUD 
 class CaseFileAPIView(APIView):
     permission_classes = [AllowAny]
     
@@ -114,7 +114,7 @@ class OrganizationAPIView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-# Authentication: Login
+# Login
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def login_view(request):
@@ -135,7 +135,7 @@ def login_view(request):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-# Authentication: Logout
+# Logout
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def logout_view(request):
