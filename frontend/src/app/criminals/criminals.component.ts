@@ -29,12 +29,30 @@ export class CriminalsComponent implements OnInit {
   }
 
   loadFilters() {
-    this.api.getFilters().subscribe({
-      next: data => {
-        this.filters = data;
-        this.updateStats();
-      },
-      error: err => (this.error = err?.message || 'Не удалось загрузить фильтры.')
+  // First load all criminals to extract filter options
+  this.api.getCriminals({}).subscribe({
+    next: criminals => {
+      const nationalities = [...new Set(criminals.map(c => c.nationality).filter(n => n))];
+      const crimeTypes = ['murder', 'fraud', 'theft', 'terrorism', 'cybercrime', 'drug_trafficking', 'kidnapping', 'other'];
+      
+      const yearSet = new Set<number>();
+      criminals.forEach(c => {
+        if (c.date_of_birth) {
+          const year = new Date(c.date_of_birth).getFullYear();
+          yearSet.add(year);
+        }
+      });
+      const years = Array.from(yearSet).sort((a, b) => b - a);
+
+      this.filters = {
+        countries: nationalities.sort() as string[],
+        years: years as number[],
+        crimeTypes: crimeTypes
+      };
+      
+      this.updateStats();
+    },
+    error: err => (this.error = err?.message || 'Не удалось загрузить фильтры.')
     });
   }
 
