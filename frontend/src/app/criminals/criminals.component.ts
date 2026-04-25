@@ -29,7 +29,6 @@ export class CriminalsComponent implements OnInit {
   }
 
   loadFilters() {
-  // First load all criminals to extract filter options
   this.api.getCriminals({}).subscribe({
     next: criminals => {
       const nationalities = [...new Set(criminals.map(c => c.nationality).filter(n => n))];
